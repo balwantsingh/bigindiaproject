@@ -1,0 +1,1630 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ... -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	  <link href="tailwind.min.css" rel="stylesheet">
+	  <link href="custom.css" rel="stylesheet">
+	  
+	  <style>
+  /* ––––––––––––––––––––––––––––––––––––––––––––––––––
+    Based on: https://codepen.io/nickelse/pen/YGPJQG
+    Influenced by: https://sproutsocial.com/
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  /* #Mega Menu Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .mega-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+  }
+
+  /* #hoverable Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .hoverable {
+    position: static;
+  }
+
+  .hoverable > a:after {
+    content: "\25BC";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .hoverable:hover .mega-menu {
+    display: block;
+  }
+
+  /* #toggle Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+  .toggleable > label:after {
+    content: "\25BC";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .toggle-input {
+    display: none;
+  }
+  .toggle-input:not(checked) ~ .mega-menu {
+    display: none;
+  }
+
+  .toggle-input:checked ~ .mega-menu {
+    display: block;
+  }
+
+  .toggle-input:checked + label {
+    color: white;
+    background: #2c5282; /*@apply bg-blue-800 */
+  }
+
+  .toggle-input:checked ~ label:after {
+    content: "\25B2";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+  
+  </style>
+</head>
+
+<body>
+      <nav class="flex items-center bg-white flex-wrap mx-auto border-b p-2">
+    <span class="flex items-center justify-between text-3xl text-gray-500 font-bold tracking-wide uppercase pl-5">
+    <a href="#"><span class="text-red-700">Big</span><span class="text-blue-700">India</span></a>
+    </span>
+        <button class="text-gray-400 inline-flex p-3 hover:bg-blue-900 rounded lg:hidden ml-auto nav-toggler" data-target="#navigation">
+      <span class="material-icons">menu</span></button>
+	
+	<form class="w-full md:mb-0 md:w-1/4 lg:ml-20">
+	  <div class="flex items-center">
+        <div class="absolute flex pl-3 text-gray-400 focus-within:text-gray-600">
+		<span class="material-icons h-5 w-5">
+		search
+		</span>
+      </div>
+	  <input class="py-3 px-4 bg-white placeholder-gray-400 text-gray-900 rounded-lg border border-gray-300 appearance-none pl-12 focus:outline-none w-full" placeholder="What are you looking for..." type="text" id="fname" name="fname">
+	  </div>
+	</form>
+	
+    <div class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto" id="navigation">
+
+      <div class="lg:inline-flex lg:flex-row lg:ml-auto flex flex-col">
+	  	  
+        <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600">
+          <a href="#">Login</a>
+        </span>
+        
+          <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600"><a href="#">Register</a></span>
+        
+        <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600">
+        <a href="#">Message</a>
+        </span>
+        <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600">
+        <a href="#">RFQ</a>
+        </span>
+        <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600">
+        <a href="#">Sell</a>
+        </span>
+      </div>
+	  
+    </div>
+  </nav>
+  
+  <!-- Nav Category -->
+  <div class="flex items-center flex-wrap mx-auto shadow-lg">
+    
+	<div class="flex">
+	
+	<ul class="flex">
+          <!--Hoverable Link-->
+		  <span class="flex material-icons text-lg items-center text-gray-400">filter_alt</span>
+		  <li class="hoverable hover:bg-white hover:text-gray-600">
+			<a href="#" class="items-center block flex px-4 lg:p-3 text-xs xs:text-base font-bold hover:bg-white hover:text-gray-500 text-gray-500 uppercase">Categories</a>
+            <div class="mega-menu mb-16 sm:mb-0 border-t shadow bg-white">
+              <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
+                <ul class="px-10 w-full sm:w-1/2 lg:w-1/6  border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">Community</h3>
+                  </div>
+					
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+					
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+                <ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-300 border-b sm:border-r-0 lg:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">Events</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+                <ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-300 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">For Rent</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+                <ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-300 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">For Sale</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+				<ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-300 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">For Sale</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+				<ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-600 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">For Sale</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                 <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+	  
+	<div class="lg:inline-flex lg:flex-row lg:ml-auto flex flex-col">
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Cars</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Motorcycles</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Mobile Phones</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Houses & Apartments</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Scooters</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Commercial & Other Vehicles</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Houses & Apartments</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Industrial Equipments</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Others</a></span>
+  </div>
+  </div>
+  
+ 
+<div class="bg-gray-200 pt-10 mb-12">
+  <div class="container mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2">
+            <!-- Article -->
+            <article class="overflow-hidden">
+                <header class="items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-5xl font-extrabold text-gray-700 mb-5">
+					We connect Buyers & Sellers
+					</h1>
+					<div class="text-2xl text-gray-600 mb-10">Bigindia.com is India's fastest online B2B marketplace, connecting buyers with suppliers.
+					</div>
+					<a class="text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-pink-500 active:bg-pink-600 uppercase text-sm shadow hover:shadow-lg" href="#">get started</a>
+                </header>
+				<footer class="flex text-gray-700 leading-none p-2 md:p-4 text-center gap-x-16">
+					<div class="py-3">
+						<p><span class="material-icons text-3xl">stars</span></p>
+						<p class="text-lg">Trusted Platform</p>
+					</div>
+					<div class="py-3">
+						<p><span class="material-icons text-3xl">verified_user</span></p>
+						<p class="text-lg">Safe & Secure</p>
+					</div>
+					<div class="py-3">
+						<p><span class="material-icons text-3xl">speaker_notes</span></p>
+						<p class="text-lg">Quick Assistance</p>
+					</div>					
+                </footer>
+
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+<!-- Column -->
+    <div class="px-1 w-full md:w-1/2 lg:my-0 lg:px-4 lg:w-1/2">
+            <!-- Article -->
+     <div class="flex justify-end w-full">
+		<img src="img/additional.png" alt="" />
+  </div>
+            <!-- END Article -->
+    </div>
+        <!-- END Column -->
+
+    </div>
+</div>
+</div>
+ 
+
+  
+  <div class="container mb-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured1.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-black" href="#">
+                        <p class="text-sm text-gray-400">
+                            By: Authorised Dealer
+                        </p>
+                    </a>
+                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                        <span class="material-icons">favorite_border</span>
+                    </a>
+                </footer>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured2.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-black" href="#">
+                        <p class="text-sm text-gray-400">
+                            By: Authorised Dealer
+                        </p>
+                    </a>
+                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                        <span class="material-icons">favorite_border</span>
+                    </a>
+                </footer>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured3.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-black" href="#">
+                        <p class="text-sm text-gray-400">
+                            By: Authorised Dealer
+                        </p>
+                    </a>
+                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                        <span class="material-icons">favorite_border</span>
+                    </a>
+                </footer>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured4.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-black" href="#">
+                        <p class="text-sm text-gray-400">
+                            By: Authorised Dealer
+                        </p>
+                    </a>
+                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                        <span class="material-icons">favorite_border</span>
+                    </a>
+                </footer>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured5.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-black" href="#">
+                        <p class="text-sm text-gray-400">
+                            By: Authorised Dealer
+                        </p>
+                    </a>
+                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                        <span class="material-icons">favorite_border</span>
+                    </a>
+                </footer>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+    </div>
+</div>
+
+
+<div class="container mt-5 mx-auto px-4 md:px-12 text-2xl font-bold text-gray-800">Transportation & Logistics</div>
+  <div class="container mb-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Community
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Events
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Rent
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Sale
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Matrimonial
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Personals
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+    </div>
+</div>
+
+
+
+<div class="container mt-5 mx-auto px-4 md:px-12 text-2xl font-bold text-gray-800">Apparel, Clothing & Garments</div>
+  <div class="container mb-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Community
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Events
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Rent
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Sale
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Matrimonial
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Personals
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+    </div>
+</div>
+
+
+<div class="bg-blue-500 py-10 mb-12">
+  <div class="container mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2">
+            <!-- Article -->
+            <article class="overflow-hidden text-white">
+                <header class="items-center justify-between leading-tight">
+                    <h1 class="text-4xl font-semibold">
+					One Request, Multiple Quotes
+					</h1>
+					<div class="text-2xl mt-3">Get free quotes from multiple sellers</div>
+                </header>
+				<footer class="leading-none p-2 md:p-4">
+					<div class="flex gap-5 py-3">
+						<p><span class="material-icons text-4xl">stars</span></p>
+						<p class="font-bold text-xl">Tell us what You Need</p>
+					</div>
+					<div class="flex gap-5 py-3">
+						<p><span class="material-icons text-4xl">verified_user</span></p>
+						<p class="font-bold text-xl">Receive free quotes from sellers</p>
+					</div>
+					<div class="flex gap-5 py-3">
+						<p><span class="material-icons text-4xl">speaker_notes</span></p>
+						<p class="font-bold text-xl">Final the Deal</p>
+					</div>					
+                </footer>
+
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+<!-- Column -->
+    <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/2">
+            <!-- Article -->
+     <div class="flex items-center w-full text-white">
+      <div class="w-full p-8">
+      <span class="block w-full text-xl uppercase font-bold mb-4">Tell us your Requirement</span>      
+        <form class="mb-4" action="/" method="post">
+          <div class="mb-4 md:w-full">
+            <input class="w-full border border-white rounded p-2 outline-none focus:shadow-outline" type="email" name="email" id="email" placeholder="Enter product / Service name">
+          </div>
+          <div class="mb-6 md:w-full">
+            <input class="w-full border border-white rounded p-2 outline-none focus:shadow-outline" type="text" name="password" id="password" placeholder="Enter your mobile">
+			<div class="text-xs mt-1">Seller will contact you on this number</div>
+          </div>
+		   <div class="mb-4 md:w-full">
+            <input class="w-full border border-white rounded p-2 outline-none focus:shadow-outline" type="email" name="email" id="email" placeholder="Your name">
+          </div>
+          <button class="w-full sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-gray-800 active:bg-gray-700 uppercase text-sm shadow hover:shadow-lg">Request for Quotation</button>
+        </form>
+    </div>
+  </div>
+            <!-- END Article -->
+    </div>
+        <!-- END Column -->
+
+    </div>
+</div>
+</div>
+
+
+
+<div class="container mt-5 mx-auto px-4 md:px-12 text-2xl font-bold text-gray-800">Industrial Plants, Machinery & Equipment</div>
+  <div class="container mb-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Community
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Events
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Rent
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Sale
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Matrimonial
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Personals
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+    </div>
+</div>
+
+
+
+<div class="container mt-5 mx-auto px-4 md:px-12 text-2xl font-bold text-gray-800">Consumer Electronics</div>
+  <div class="container mb-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Community
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Events
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Rent
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Sale
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Matrimonial
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Personals
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+    </div>
+</div>
+
+
+<div class="bg-blue-500 py-10 mb-12">
+<h1 class="text-4xl font-extrabold text-white text-center">Choose your suppliers by cities</h1>
+  <div class="max-w-4xl p-8 mx-auto"
+    x-data="alpineLightbox()" x-init="src = pixel" x-on:keydown.escape.window="close()">
+    <!-- Start thumbnail grid -->
+    <div class="grid grid-cols-2 gap-4 sm:gap-8 sm:grid-cols-3 md:grid-cols-5">
+      
+
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/delhi.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Delhi</p>
+		</a>
+	 </div>
+
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/bengaluru.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Bengaluru</p>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/chennai.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Chennai</p>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/mumbai.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Mumbai</p>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/ahmedabad.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Ahmedabad</p>
+		</a>
+	 </div>	 
+     
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/kolkata.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Kolkata</p>
+		</a>
+	 </div>
+
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/pune.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Pune</p>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/surat.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Surat</p>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/jaipur.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Jaipur</p>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-blue-100" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-white p-1" src="img/hyderabad.jpg" alt="Thumbnail">
+		</div>
+		<p class="text-center mt-3 text-xl">Hyderabad</p>
+		</a>
+	 </div>	
+    </div>
+    <!-- End thumbnail grid -->
+  </div>
+</div>
+
+<div class="container mt-5 mx-auto px-4 md:px-12 text-2xl font-bold text-gray-800">Vehicle & Accessories</div>
+  <div class="container mb-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Community
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Events
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Rent
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Sale
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Matrimonial
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Personals
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+    </div>
+</div>
+
+
+
+<div class="container mt-5 mx-auto px-4 md:px-12 text-2xl font-bold text-gray-800">Industrial & Engineering Products</div>
+  <div class="container mb-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Community
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Events
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Rent
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            For Sale
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Matrimonial
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/6">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="#">
+                            Personals
+                        </a>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Unisex Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Kids Dresses</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Winter Wear</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Animal Clothing</a></p>
+						<p class="text-gray-600 text-sm leading-7"><a class="hover:text-indigo-500" href="#">Socks, Leggings</a></p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+    </div>
+</div>
+
+
+
+<div class="bg-blue-500 py-10">
+<h1 class="text-4xl font-extrabold text-white text-center">Browse products by Brands</h1>
+  <div class="max-w-4xl p-8 mx-auto">
+    <!-- Start thumbnail grid -->
+    <div class="grid grid-cols-2 gap-4 sm:gap-8 sm:grid-cols-3 md:grid-cols-6">
+      
+
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand1.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand2.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand3.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand4.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand5.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>	 
+     
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand6.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand7.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand8.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand9.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+	 
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand10.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>	
+	 
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand11.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+
+	<div>
+        <a class="text-white hover:text-indigo-300" href="#">
+		<div>
+		<img class="block object-fill w-30 h-30 rounded-full border-2 border-orange-500 p-1 bg-orange-600" src="img/brand12.jpg" alt="Thumbnail">
+		</div>
+		</a>
+	 </div>
+	 
+    </div>
+    <!-- End thumbnail grid -->
+  </div>
+</div>
+
+
+
+<footer class="footer-1 bg-gray-100 py-6 sm:py-6">
+  <div class="container mx-auto px-4">
+    <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
+        <h5 class="text-lg font-bold mb-6">Customer Services</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Contact Us</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Privacy Policies</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Help Center</a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
+        <h5 class="text-lg font-bold mb-6">About Us</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">About Bigindia.com</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Sitemap</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Sell</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Career</a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+        <h5 class="text-lg font-bold mb-6">Buy on Bigindia.com</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">All Categories</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Request for Quotation</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Become Member</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Pricing</a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+        <h5 class="text-lg font-bold mb-6">Our Products</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Job Board Software</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">CRM Software</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">CMS Software</a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto">
+        <h5 class="text-lg font-bold mb-6 sm:text-center xl:text-left">Subscribe newsletter</h5>
+        <div class="flex sm:justify-center xl:justify-start">
+          <p>Get the latest product trends and industry news sent to select2007@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 sm:gap-8 sm:grid-cols-3 md:grid-cols-2 border-t border-b py-4">
+	<div class="flex">
+	<span class="text-lg mr-4">Download: </span>
+	<span class="mr-3"><a href="#"><img class="" src="img/ios.png" alt="Thumbnail"></a></span>
+	<span><a href="#"><img class="" src="img/android.png" alt="Thumbnail"></a></span>
+	</div>
+	
+	<div class="flex items-center justify-end">
+	<div class="text-lg mr-4">Download:</div>
+	<div class="flex sm:justify-center xl:justify-start">
+          <a href="" class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600">
+            <span class="material-icons">facebook</span>
+          </a>
+          <a href="" class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-blue-400 hover:border-blue-400">
+            <span class="material-icons">facebook</span>
+          </a>
+          <a href="" class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-red-600 hover:border-red-600">
+            <span class="material-icons">facebook</span>
+          </a>
+        </div>
+	</div>
+	
+	
+	</div>
+	
+	<div class="sm:-mx-4 mt-2 pt-2 sm:mt-2 sm:pt-2">
+      <div class="sm:w-full px-4 text-center">
+        © 2016-2021 Bigindia.com. All rights reserved.
+      </div>
+    </div>
+  </div> 
+</footer>
+
+
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/script.js"></script>
+
+
+</body>
+</html>

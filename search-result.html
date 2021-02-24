@@ -1,0 +1,621 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ... -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	  <link href="tailwind.min.css" rel="stylesheet">
+	  <link href="custom.css" rel="stylesheet">
+	  
+	  <style>
+  /* ––––––––––––––––––––––––––––––––––––––––––––––––––
+    Based on: https://codepen.io/nickelse/pen/YGPJQG
+    Influenced by: https://sproutsocial.com/
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  /* #Mega Menu Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .mega-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+  }
+
+  /* #hoverable Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .hoverable {
+    position: static;
+  }
+
+  .hoverable > a:after {
+    content: "\25BC";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .hoverable:hover .mega-menu {
+    display: block;
+  }
+
+  /* #toggle Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+  .toggleable > label:after {
+    content: "\25BC";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .toggle-input {
+    display: none;
+  }
+  .toggle-input:not(checked) ~ .mega-menu {
+    display: none;
+  }
+
+  .toggle-input:checked ~ .mega-menu {
+    display: block;
+  }
+
+  .toggle-input:checked + label {
+    color: white;
+    background: #2c5282; /*@apply bg-blue-800 */
+  }
+
+  .toggle-input:checked ~ label:after {
+    content: "\25B2";
+    font-size: 10px;
+    padding-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+  
+  </style>
+</head>
+
+<body>
+      <nav class="flex items-center bg-white flex-wrap mx-auto border-b p-2">
+    <span class="flex items-center justify-between text-3xl text-gray-500 font-bold tracking-wide uppercase pl-5">
+    <a href="#"><span class="text-red-700">Big</span><span class="text-blue-700">India</span></a>
+    </span>
+        <button class="text-gray-400 inline-flex p-3 hover:bg-blue-900 rounded lg:hidden ml-auto nav-toggler" data-target="#navigation">
+      <span class="material-icons">menu</span></button>
+	
+	<form class="w-full md:mb-0 md:w-1/4 lg:ml-20">
+	  <div class="flex items-center">
+        <div class="absolute flex pl-3 text-gray-400 focus-within:text-gray-600">
+		<span class="material-icons h-5 w-5">
+		search
+		</span>
+      </div>
+	  <input class="py-3 px-4 bg-white placeholder-gray-400 text-gray-900 rounded-lg border border-gray-300 appearance-none pl-12 focus:outline-none w-full" placeholder="What are you looking for..." type="text" id="fname" name="fname">
+	  </div>
+	</form>
+	
+    <div class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto" id="navigation">
+
+      <div class="lg:inline-flex lg:flex-row lg:ml-auto flex flex-col">
+	  	  
+        <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600">
+          <a href="#">Login</a>
+        </span>
+        
+          <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600"><a href="#">Register</a></span>
+        
+        <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600">
+        <a href="#">Message</a>
+        </span>
+        <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600">
+        <a href="#">RFQ</a>
+        </span>
+        <span class="lg:inline-flex lg:w-auto w-auto px-6 py-2 text-xs uppercase font-bold text-gray-800 hover:text-gray-600">
+        <a href="#">Sell</a>
+        </span>
+      </div>
+	  
+    </div>
+  </nav>
+  
+  <!-- Nav Category -->
+  <div class="flex items-center flex-wrap mx-auto border-b">
+    
+	<div class="flex">
+	
+	<ul class="flex">
+          <!--Hoverable Link-->
+		  <span class="flex material-icons text-lg items-center text-gray-400">filter_alt</span>
+		  <li class="hoverable hover:bg-white hover:text-gray-600">
+			<a href="#" class="items-center block flex px-4 lg:p-3 text-xs xs:text-base font-bold hover:bg-white hover:text-gray-500 text-gray-500 uppercase">Categories</a>
+            <div class="mega-menu mb-16 sm:mb-0 border-t shadow bg-white">
+              <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
+                <ul class="px-10 w-full sm:w-1/2 lg:w-1/6  border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">Community</h3>
+                  </div>
+					
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+					
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+                <ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-300 border-b sm:border-r-0 lg:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">Events</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+                <ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-300 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">For Rent</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+                <ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-300 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">For Sale</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+				<ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-300 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">For Sale</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                    <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+				<ul class="px-10 w-full sm:w-1/2 lg:w-1/6 border-gray-600 pb-6 pt-6 lg:pt-3">
+                  <div class="flex items-center">
+                    <h3 class="font-semibold text-gray-900 mb-2">For Sale</h3>
+                  </div>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Unisex Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Kids Dresses (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Winter Wear (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Animal Clothing (501)</a></p>
+					<p class="text-gray-800 text-sm leading-7"><a class="hover:text-blue-500" href="#">Socks, Leggings (501)</a></p>
+                  <div class="flex items-center py-3">
+                 <a href="#" class="font-semibold text-sm text-gray-900 hover:text-blue-500">All categories...</a>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+	  
+	<div class="lg:inline-flex lg:flex-row lg:ml-auto flex flex-col">
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Cars</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Motorcycles</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Mobile Phones</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Houses & Apartments</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Scooters</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Commercial & Other Vehicles</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Houses & Apartments</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Industrial Equipments</a></span>
+	<span class="lg:inline-flex lg:w-auto lg:pb-3 w-auto px-4 py-2"><a class="text-gray-800 hover:text-gray-600" href="#">Others</a></span>
+  </div>
+  </div>
+  
+ 
+
+ 
+<div class="flex">
+  <section class="bg-white border-r flex-shrink-0 w-2/12" id="left-side-panel">
+	<div class="mb-5">
+		<p class="flex px-2 pt-2 text-gray-500"><span class="material-icons text-lg">filter_alt</span> Filters</p>
+	</div>
+	
+	<div class="mb-5">
+		<p class="block px-5 py-1 font-bold text-xs">CATEGORY</p>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Software</a>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Electronics</a>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Electrical</a>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Mechanical</a>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Other</a>
+		<a class="border-t border-b block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Fashion</a>
+	</div>
+	
+	<div class="mb-5">
+		<p class="block px-5 py-1 font-bold text-xs">LOCATION</p>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">New Delhi</a>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Chandigarh</a>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Mumbai</a>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Dehradun</a>
+		<a class="border-t block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Haridwar</a>
+		<a class="border-t border-b block px-5 py-1 hover:bg-gray-100 text-gray-600" href="#">Rishikesh</a>
+	</div>	
+	
+  </section>
+  
+  <div class="bg-white flex-grow pb-4 px-4" id="main-content">
+	<nav class="container">
+	  <ol class="list-reset py-4 pl-4 rounded flex text-gray-400">
+		<li class="px-2"><a href="#" class="no-underline text-indigo">Home</a></li>
+		<li>/</li>
+		<li class="px-2"><a href="#" class="no-underline text-indigo">Library</a></li>
+		<li>/</li>
+		<li class="px-2">Data</li>
+	  </ol>
+	</nav>
+
+
+	<div class="container mb-12 mx-auto px-4">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured1.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured2.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured3.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured4.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured5.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured1.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured2.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured3.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured4.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+		<!-- Column -->
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/5">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg border shadow">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="img/featured5.jpg">
+                </a>
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <p class="text-sm text-gray-500">Samsung</p>
+						<a class="no-underline hover:underline text-black" href="#">
+                            Hyundai Luxary Car
+                        </a>
+						<p class="text-gray-400">$100 / Pieces</p>
+                    </h1>
+                </header>
+
+            </article>
+            <!-- END Article -->
+        </div>
+        <!-- END Column -->
+
+    </div>
+</div>
+
+
+
+  </div>
+</div>
+  
+  
+  
+  
+  
+  
+  
+<footer class="footer-1 bg-gray-100 py-6 sm:py-6">
+  <div class="container mx-auto px-4">
+    <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
+        <h5 class="text-lg font-bold mb-6">Customer Services</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Contact Us</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Privacy Policies</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Help Center</a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
+        <h5 class="text-lg font-bold mb-6">About Us</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">About Bigindia.com</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Sitemap</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Sell</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Career</a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+        <h5 class="text-lg font-bold mb-6">Buy on Bigindia.com</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">All Categories</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Request for Quotation</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Become Member</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Pricing</a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+        <h5 class="text-lg font-bold mb-6">Our Products</h5>
+        <ul class="list-none footer-links">
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Job Board Software</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">CRM Software</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">CMS Software</a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto">
+        <h5 class="text-lg font-bold mb-6 sm:text-center xl:text-left">Subscribe newsletter</h5>
+        <div class="flex sm:justify-center xl:justify-start">
+          <p>Get the latest product trends and industry news sent to select2007@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 sm:gap-8 sm:grid-cols-3 md:grid-cols-2 border-t border-b py-4">
+	<div class="flex">
+	<span class="text-lg mr-4">Download: </span>
+	<span class="mr-3"><a href="#"><img class="" src="img/ios.png" alt="Thumbnail"></a></span>
+	<span><a href="#"><img class="" src="img/android.png" alt="Thumbnail"></a></span>
+	</div>
+	
+	<div class="flex items-center justify-end">
+	<div class="text-lg mr-4">Download:</div>
+	<div class="flex sm:justify-center xl:justify-start">
+          <a href="" class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600">
+            <span class="material-icons">facebook</span>
+          </a>
+          <a href="" class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-blue-400 hover:border-blue-400">
+            <span class="material-icons">facebook</span>
+          </a>
+          <a href="" class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-red-600 hover:border-red-600">
+            <span class="material-icons">facebook</span>
+          </a>
+        </div>
+	</div>
+	
+	
+	</div>
+	
+	<div class="sm:-mx-4 mt-2 pt-2 sm:mt-2 sm:pt-2">
+      <div class="sm:w-full px-4 text-center">
+        © 2016-2021 Bigindia.com. All rights reserved.
+      </div>
+    </div>
+  </div> 
+</footer>
+
+
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/script.js"></script>
+
+
+</body>
+</html>

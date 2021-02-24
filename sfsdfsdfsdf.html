@@ -1,0 +1,49 @@
+<div class="h-screen bg-gray-300">
+  <div class="max-w-4xl p-8 mx-auto"
+    x-data="alpineLightbox()" x-init="src = pixel" x-on:keydown.escape.window="close()">
+    <!-- Start thumbnail grid -->
+    <div class="grid grid-cols-2 gap-4 sm:gap-8 sm:grid-cols-3 md:grid-cols-4">
+      
+	  <!-- Start thumbnail -->
+      <figure
+        class="block w-full p-1 transition-shadow duration-200 ease-out bg-white border border-gray-300 rounded cursor-pointer hover:shadow-xl">
+        <img class="block object-fill w-full h-full" src="https://via.placeholder.com/200/09f/fff?text=Thumb"
+          alt="Thumbnail" data-fullsize="https://via.placeholder.com/1200x630/09f/fff?text=Full+Size"
+          x-on:click="open($event)">
+      </figure>
+      <!-- End thumbnail -->
+      
+      <figure
+        class="block w-full p-1 transition-shadow duration-200 ease-out bg-white border border-gray-300 rounded cursor-pointer hover:shadow-xl">
+        <img class="block object-fill w-full h-full" src="https://via.placeholder.com/200/f09/fff?text=Thumb"
+          alt="Thumbnail" data-fullsize="https://via.placeholder.com/1200x1200/f09/fff?text=Full+Size"
+          x-on:click="open($event)">
+      </figure>
+      <figure
+        class="block w-full p-1 transition-shadow duration-200 ease-out bg-white border border-gray-300 rounded cursor-pointer hover:shadow-xl">
+        <img class="block object-fill w-full h-full" src="https://via.placeholder.com/200/9f0/fff?text=Thumb"
+          alt="Thumbnail" data-fullsize="https://via.placeholder.com/630x1200/9f0/fff?text=Full+Size"
+          x-on:click="open($event)">
+      </figure>
+      <figure
+        class="block w-full p-1 transition-shadow duration-200 ease-out bg-white border border-gray-300 rounded cursor-pointer hover:shadow-xl">
+        <img class="block object-fill w-full h-full" src="https://via.placeholder.com/200/90f/fff?text=Thumb"
+          alt="Thumbnail" data-fullsize="https://via.placeholder.com/400x600/90f/fff?text=Full+Size"
+          x-on:click="open($event)">
+      </figure>
+      <figure
+        class="block w-full p-1 transition-shadow duration-200 ease-out bg-white border border-gray-300 rounded cursor-pointer hover:shadow-xl">
+        <img class="block object-fill w-full h-full" src="https://via.placeholder.com/200/f90/fff?text=Thumb"
+          alt="Thumbnail" data-fullsize="https://via.placeholder.com/1200x630/f90/fff?text=Full+Size"
+          x-on:click="open($event)">
+      </figure>
+      <figure
+        class="block w-full p-1 transition-shadow duration-200 ease-out bg-white border border-gray-300 rounded cursor-pointer hover:shadow-xl">
+        <img class="block object-fill w-full h-full" src="https://via.placeholder.com/200/0f9/fff?text=Thumb"
+          alt="Thumbnail" data-fullsize="https://via.placeholder.com/1200x1200/0f9/fff?text=Full+Size"
+          x-on:click="open($event)">
+      </figure>
+    </div>
+    <!-- End thumbnail grid -->
+  </div>
+</div>
