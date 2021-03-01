@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ... -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	  <link href="tailwind.min.css" rel="stylesheet">
+	  <link href="custom.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-400">
+        <div class="container mx-auto px-4 mt-4" x-data="{ image: 'image1' }">
+            <div>
+                <img src="img/mac-pro.jpg" alt="mac pro" x-show="image === 'image1'">
+                <img src="img/pro-display-xdr.jpg" alt="mac pro" x-show="image === 'image2'">
+                <img src="img/macbook-pro.jpg" alt="mac pro" x-show="image === 'image3'">
+            </div>
+            <div class="flex items-center mt-4">
+                <a href="#" class="border border-transparent hover:border-blue-500" :class="{ 'border-blue-500' : image === 'image1'}" @click.prevent="image = 'image1'"><img src="img/mac-pro.jpg" alt="mac pro" class="w-12"></a>
+                <a href="#" class="border border-transparent hover:border-blue-500 ml-2" :class="{ 'border-blue-500' : image === 'image2' }" @click.prevent="image = 'image2'"><img src="img/pro-display-xdr.jpg" alt="mac pro" class="w-12"></a>
+                <a href="#" class="border border-transparent hover:border-blue-500 ml-2" :class="{ 'border-blue-500' : image === 'image3' }" @click.prevent="image = 'image3'"><img src="img/macbook-pro.jpg" alt="mac pro" class="w-12"></a>
+            </div>
+        </div>	
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.8/dist/alpine.js" defer></script>
+</body>
+</html>

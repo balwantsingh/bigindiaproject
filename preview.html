@@ -276,10 +276,129 @@
 	  </div>
 	  
 	  
-      <div class="w-full md:w-1/2 lg:w-1/6">
-		<a href="#" class="block bg-red-700 text-white text-xl py-4 px-4 text-center rounded hover:bg-red-600">Contact Supplier</a>
-	  </div>
+      <div class="w-full md:w-1/2 lg:w-1/6" x-data="{ isOpen: false }">
+		<a href="#" class="block w-full focus:outline-none border border-transparent py-4 px-4 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
+		@click="isOpen = true
+        $nextTick(() => $refs.modalCloseButton.focus())
+        " 
+		>Contact Supplier</a>
+	  
       
+	                  <div
+                    style="background-color: rgba(0, 0, 0, .5)" 
+                    class="mx-auto absolute top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto"   
+                    x-show="isOpen"       
+                    x-transition:enter="transition ease-out duration-100"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition ease-out duration-100"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"    
+                >
+                    <div class="container w-5/12 ml-auto rounded  overflow-y-auto">
+                        <div class="bg-white rounded px-8 pt-4 pb-8">
+                            <div class="modal-header mb-4 border-b">
+                                <h1 class="font-bold text-2xl">Contact this supplier</h1>
+								<p class="text-gray-500 text-xs mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>	
+							<div class="absolute top-10 right-10">
+                                <button 
+                                    class=""
+                                    @click="isOpen = false"
+                                    x-ref="modalCloseButton"
+                                >
+							<span class="material-icons text-gray-400">highlight_off</span>
+                                </button>
+                            </div>		
+                            
+                    <div class="modal-body">
+						<div class="flex -mx-2">
+							<div class="mb-5 w-1/3 px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Quantity</label>
+							<input type="text"
+								class="border border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder="10">
+							</div>							
+							<div class="mb-5 w-1/3 px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Price</label>
+							<input type="text"
+								class="border bg-gray-300 border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder="1999" readonly>
+							</div>							
+							<div class="mb-5 w-1/3 px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Total amount</label>
+							<input type="text"
+								class="border bg-gray-300 border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder="1999" readonly>
+							</div>
+						</div>
+						
+						<div class="flex -mx-2">
+							<div class="mb-5 w-1/3 px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Contact name</label>
+							<input type="text"
+								class="border border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder="">
+							</div>
+							<div class="mb-5 w-1/3 px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Email ID</label>
+							<input type="text"
+								class="border border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder="">
+							</div>
+						
+							<div class="mb-5 w-1/3 px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Mobile</label>
+							<input type="text"
+								class="border border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder="">
+							</div>							
+						</div>
+
+						<div class="flex -mx-2">
+							<div class="mb-5 w-full px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Delivery address</label>
+							<input type="text"
+								class="border border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder="">
+							</div>					
+						</div>
+
+						<div class="flex -mx-2">
+							<div class="mb-5 w-1/2 px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Country</label>
+							<select class="border border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium" name="country" id="country">
+                                        <option value="0">Select Country</option><option value="1">Afghanistan - AF</option><option value="2">Albania - AL</option><option value="3">Algeria - DZ</option><option value="4">American Samoa - AS</option>
+                                    </select>
+							</div>
+							<div class="mb-5 w-1/2 px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">City</label>
+							<input type="text"
+								class="border border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder="">
+							</div>
+						</div>
+
+						<div class="flex -mx-2">
+							<div class="mb-5 w-full px-2">
+							<label for="firstname" class="font-bold mb-1 text-gray-700 block">Message</label>
+							<textarea type="text"
+								class="border border-gray-300 w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+								placeholder=""></textarea>
+							</div>					
+						</div>						
+						
+						<button class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
+						>Send</button>
+						
+						
+
+				</div>
+                        </div>
+                    </div>
+                </div>
+</div>
+	  
    </div>
 
 
@@ -399,10 +518,10 @@
   </div> 
 </footer>
 
-
+		
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/script.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.8/dist/alpine.js" defer></script>
 
 </body>
 </html>
